@@ -1,0 +1,102 @@
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+
+const LoginPage = () => {
+  return (
+    <div className="login-page">
+      <h1>Welcome Back</h1>
+      <button className="input-btn">Enter Email</button>
+      <button className="input-btn">Enter Password</button>
+      <button className="login-btn">Login</button>
+    </div>
+  );
+};
+
+const DashboardPage = () => {
+  return (
+    <div className="dashboard-page">
+      <h2>Hello, User!</h2>
+      <p>Weather information here</p>
+      <button className="notification-btn">Notifications</button>
+      <div className="room-buttons">
+        <Link to="/living-room">
+          <button className="room-btn">Living Room</button>
+        </Link>
+        <Link to="/bedroom">
+          <button className="room-btn">Bedroom</button>
+        </Link>
+      </div>
+      <button className="recent-btn">Recent</button>
+      <button className="dashboard-btn">Dashboard</button>
+      <button className="settings-btn">Settings</button>
+    </div>
+  );
+};
+
+const NotificationPage = () => {
+  return (
+    <div className="notification-page">
+      <Link to="/">
+        <button className="back-btn">Back</button>
+      </Link>
+      <h3>Notifications</h3>
+      {/* Notification page content here */}
+    </div>
+  );
+};
+
+const LivingRoomPage = () => {
+  return (
+    <div className="room-page">
+      <Link to="/">
+        <button className="back-btn">Back</button>
+      </Link>
+      <Link to="/dashboard">
+        <button className="dashboard-btn">Dashboard</button>
+      </Link>
+      <button className="recent-btn">Recent</button>
+      <button className="settings-btn">Settings</button>
+      <div className="device">
+        <h3>Living Room Devices</h3>
+        {/* Living Room devices content here */}
+      </div>
+    </div>
+  );
+};
+
+const BedroomPage = () => {
+  return (
+    <div className="room-page">
+      <Link to="/">
+        <button className="back-btn">Back</button>
+      </Link>
+      <Link to="/dashboard">
+        <button className="dashboard-btn">Dashboard</button>
+      </Link>
+      <button className="recent-btn">Recent</button>
+      <button className="settings-btn">Settings</button>
+      <div className="device">
+        <h3>Bedroom Devices</h3>
+        {/* Bedroom devices content here */}
+      </div>
+    </div>
+  );
+};
+
+const App = () => {
+  return (
+    <Router>
+      <div className="container">
+        <Switch>
+          <Route path="/" exact component={LoginPage} />
+          <Route path="/dashboard" component={DashboardPage} />
+          <Route path="/notification" component={NotificationPage} />
+          <Route path="/living-room" component={LivingRoomPage} />
+          <Route path="/bedroom" component={BedroomPage} />
+        </Switch>
+      </div>
+    </Router>
+  );
+};
+
+export default App;
